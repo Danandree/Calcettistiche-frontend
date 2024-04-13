@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="textContainer">
+        <h2>Fai vedere chi è il più forte</h2>
+        <h2>Organizza la partita perfetta</h2>
+        <h2>Scegli i migliori ed entra a far parte della squadra</h2>
+    </div>
+    @if(!isLogged()){
+    <div class="formContainer">
+        <div class="buttonContainer">
+            <div class="changeButtons leftRadius" (click)="logOrSign = true" [ngClass]="{'buttonBackground': logOrSign}"><h3>Login</h3></div>
+            <div class="changeButtons rightRadius" (click)="logOrSign = false" [ngClass]="{'buttonBackground': !logOrSign}"><h3>Signin</h3></div>
+        </div>
+        @if(logOrSign){<app-login (changeLoginState)="logOrSign = !logOrSign"></app-login>}
+        @else{<app-signup (changeLoginState)="logOrSign = !logOrSign"></app-signup>}
+    </div>
+    }
+
+</div>

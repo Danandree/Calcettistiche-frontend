@@ -1,0 +1,9 @@
+<div class="container">
+    <h2>Elimina utente</h2>
+    <p>Sicuri di voler eliminare l'utente </p>
+    <p><strong>{{data.user.username}}?</strong> </p>
+    <div class="buttons">
+        <button mat-raised-button color="primary" mat-dialog-close>No</button>
+        <button mat-raised-button color="warn" [mat-dialog-close]="true">Elimina</button>
+    </div>
+</div>

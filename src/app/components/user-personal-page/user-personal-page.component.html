@@ -1,0 +1,27 @@
+@if(user){
+<h2>User page</h2>
+<div class="container">
+    <div class="dataContainer">
+        <h2>Benvenuto {{user.username}}</h2>
+        <!-- <img src="{{user.img}}" alt="User image"> -->
+        <p>id: <strong>{{user._id}}</strong></p>
+        <p>Email: <strong>{{user.email}}</strong></p>
+        <p>Username: <strong>{{user.username}}</strong></p>
+    </div>
+    @if(formOpened){
+        <form>
+            <mat-form-field class="example-full-width">
+                <mat-label>{{inputLabel}}</mat-label>
+                <input matInput [(ngModel)]="inputPlaceholder" [ngModelOptions]="{standalone: true}" />
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="modifyUser(inputLabel)">Modifica</button>
+            <button mat-raised-button (click)="formOpened=false">Chiudi</button>
+        </form>
+    }
+    <button mat-raised-button [ngClass]="{'selectedButton': inputLabel=='Email' && formOpened}" (click)="openForm('Email')">Cambia mail</button>
+    <button mat-raised-button [ngClass]="{'selectedButton': inputLabel=='Username' && formOpened}" (click)="openForm('Username')">Cambia username</button>
+    <button mat-raised-button [ngClass]="{'selectedButton': inputLabel=='Password' && formOpened}" (click)="openForm('Password')">Cambia password</button>
+    <!-- <button mat-raised-button>Cambia immagine</button> -->
+    <button class="deleteButton" mat-raised-button color="warn" (click)="deleteUser()">Elimina utente</button>
+</div>
+}

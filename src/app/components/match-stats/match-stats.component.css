@@ -1,0 +1,77 @@
+h2,
+h3 {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.teams,
+.goalContainer,
+.title {
+    background-color: rgb(114, 184, 255);
+}
+
+.title {
+    border-radius: 5px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.title p {
+    text-align: center;
+}
+
+.teams {
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 5px;
+}
+
+.team {
+    text-align: center;
+    width: 48%;
+    margin: 5px auto;
+}
+
+.divider {
+    width: 10px;
+}
+
+.start {
+    text-align: start;
+}
+
+.end {
+    text-align: end;
+}
+
+.space {
+    height: 10px;
+    width: 45%;
+    text-align: center;
+}
+
+.goalContainer {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.goalContainer h3 {
+    margin: 10px auto;
+    border-bottom: solid 2px black;
+}
+
+.goalRow {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hide {
+    display: none;
+}
+
+button {
+    margin: 5px auto;
+}

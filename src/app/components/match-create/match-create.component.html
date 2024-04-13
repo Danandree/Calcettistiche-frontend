@@ -1,0 +1,108 @@
+<div class="container">
+    <h2>@if(matchId){ Modifica }@else{ Crea } partita</h2>
+    <form [formGroup]="form">
+        <div class="team sameBackground">
+            <mat-form-field [formGroup]="form">
+                <mat-label>Team 1</mat-label>
+                <mat-select formControlName="team1" multiple>
+                    @for (user of userList; track user) {
+                    <mat-option [value]="user"
+                        (onSelectionChange)="checkUserGoal(user,1)">{{user.username}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <p>Giocatori: {{form.get('team1')!.value!.length}}</p>
+            @for(user of form.get('team1')!.value; track user) {
+            <p [ngClass]="{'warningDouble': checkDouble(user)}">{{user.username}}</p>
+            }
+        </div>
+        <div class="team sameBackground">
+            <mat-form-field [formGroup]="form">
+                <mat-label>Team 2</mat-label>
+                <mat-select formControlName="team2" multiple>
+                    @for (user of userList; track user) {
+                    <mat-option [value]="user"
+                        (onSelectionChange)="checkUserGoal(user,2)">{{user.username}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <p>Giocatori: {{form.get('team2')!.value!.length}}</p>
+            @for(user of form.get('team2')!.value; track user) {
+            <p [ngClass]="{'warningDouble': checkDouble(user)}">{{user.username}}</p>
+            }
+        </div>
+        <div class="team sameBackground">
+            <mat-form-field [formGroup]="form">
+                <mat-label>Goal team 1</mat-label>
+                <mat-select formControlName="goalTeam1" multiple>
+                    @for (user of form.get('team1')!.value; track user) {
+                    <mat-option [value]="user">{{user.username}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <p>Goal: {{getTeamGoalSum(1)}}</p>
+            @for(user of form.get('goalTeam1')!.value; track user) {
+            @if(form.get('team1')!.value.includes(user)){
+            <div class="playerGoal">
+                <p>{{user.username}}:</p>
+                <div class="buttonBlock">
+                    <button mat-mini-fab color="primary" (click)="removeGoal(user._id)">-</button>
+                    <p>{{goalPerUser[user._id]}}</p>
+                    <button mat-mini-fab color="primary" (click)="addGoal(user._id)">+</button>
+                </div>
+            </div>
+            }
+            }
+        </div>
+        <div class="team sameBackground">
+            <mat-form-field [formGroup]="form">
+                <mat-label>Goal team 2</mat-label>
+                <mat-select formControlName="goalTeam2" multiple>
+                    @for (user of form.get('team2')!.value; track user) {
+                    <mat-option [value]="user">{{user.username}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <p>Goal: {{getTeamGoalSum(2)}}</p>
+            @for(user of form.get('goalTeam2')!.value; track user) {
+            @if(form.get('team2')!.value.includes(user)){
+            <div class="playerGoal">
+                <p>{{user.username}}:</p>
+                <div class="buttonBlock">
+                    <button mat-mini-fab color="primary" (click)="removeGoal(user._id)">-</button>
+                    <p>{{goalPerUser[user._id]}}</p>
+                    <button mat-mini-fab color="primary" (click)="addGoal(user._id)">+</button>
+                </div>
+            </div>
+            }
+            }
+        </div>
+        <div class="team adminPicker sameBackground">
+            <mat-form-field [formGroup]="form">
+                <mat-label>Admins:</mat-label>
+                <mat-select formControlName="admins" multiple>
+                    @for (user of form.get('team1')!.value.concat(form.get('team2')!.value); track user) {
+                    <mat-option [value]="user">{{user.username}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <p class="sameBackground">Admins: {{form.get('admins')!.value.length}} </p>
+            @for(user of form.get('admins')!.value; track user) {
+            @if(form.get('team1')!.value.includes(user) || form.get('team2')!.value.includes(user)) {
+            <p [ngClass]="{'sameBackground': (form.get('admins')!.value.length > 0)}">{{user.username}}</p>
+            }
+            }
+        </div>
+        <div class="team datePicker">
+            <mat-form-field [formGroup]="form">
+                <mat-label>Data:</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" (click)="submit()" [disabled]="!form.valid">
+                @if(!matchId){ Crea }@else{ Modifica }
+            </button>
+        </div>
+    </form>
+</div>

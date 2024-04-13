@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(178, 217, 255);
+    height: 100vh;
+}
+.menuTitle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(114, 184, 255);
+    padding-top: 7px;
+}
+h3{
+    margin: 0 auto;
+}
+.title {
+    width: 50%;
+    margin: 10px auto;
+}
+
+button {
+    width: 60%;
+}
+
+.divider {
+    background-color: blue;
+    margin: 15px auto;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px auto;
+    gap:5px;
+    padding-bottom: 10px;
+    border-bottom: 2px rgb(114, 184, 255) solid;
+}
+.log-button{
+    margin: 10px auto;
+}
+.mat-mdc-raised-button:not(:disabled){
+    background-color: rgb(114, 184, 255);
+}
+.mat-mdc-raised-button.mat-warn{
+    background-color: rgb(255, 98, 0);
+    color: black;
+}
+
+@media screen and (max-width: 450px) {
+    .title {
+        width: 90%;
+    }
+    button{
+        width: 90%;
+    }
+    
+}

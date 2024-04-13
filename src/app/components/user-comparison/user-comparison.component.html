@@ -1,0 +1,27 @@
+<form class="formContainer">
+    <mat-form-field>
+        <mat-label>Giocatore 1</mat-label>
+        <mat-select>
+            @for (user of userList; track user) {
+            <mat-option [value]="user.username"
+                (onSelectionChange)="onChangeUser(user._id)">{{user.username}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Giocatore 2</mat-label>
+        <mat-select>
+            @for (user of userList; track user) {
+            <mat-option [value]="user.username"
+                (onSelectionChange)="onChangeUser(user._id,false)">{{user.username}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+</form>
+<div class="container">
+    <app-user-stats [userId]="user1Id"></app-user-stats>
+    @if(user2Id){
+    <app-user-stats [userId]="user2Id"></app-user-stats>
+    }@else{
+    }
+</div>

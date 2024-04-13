@@ -1,0 +1,64 @@
+.container {
+    /* display: flex; */
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
+    /* background-image: url('../../../assets/img/campo-largo-e-pallone.png'); */
+    /* background-size: cover; */
+    height: 85svh;
+}
+
+.textContainer,
+.formContainer {
+    width: 100%;
+    margin: 5px auto;
+    max-width: 500px;
+    text-align: center;
+    /* height: fit-content; */
+}
+.formContainer{
+    border-radius: 10px 10px 0 0;
+}
+.buttonContainer {
+    /* background-color: rgb(114, 184, 255); */
+    display: flex;
+    width: 100%;
+    /* border: solid 2px red; */
+    justify-content: space-evenly;
+}
+.leftRadius{
+    border-radius: 10px 0 0 0;
+}
+.rightRadius{
+    border-radius: 0 10px 0 0;
+    
+}
+.changeButtons {
+    width: 50%;
+    /* border: solid 2px green; */
+    border: 3px solid rgb(114, 184, 255);
+    background-color: rgb(178, 217, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonBackground{
+    background-color: rgb(114, 184, 255);
+}
+h3 {
+    margin-top: 10px;
+}
+
+/* app-login{
+    width: 100%;
+} */
+
+@media screen and (max-width: 450px) {
+    /* .container {
+        flex-direction: column;
+    } */
+    /* .textContainer, .formContainer {
+        width: 100%;
+        margin: 5px auto;
+    } */
+
+}

@@ -1,0 +1,27 @@
+@if(userStats){
+<h2>Lista giocatori: {{userList.length}}</h2>
+<table mat-table [dataSource]="userList" class="table-test">
+    <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <td mat-cell *matCellDef="let user">{{user.username}}</td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="img">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let user"><img src="{{getImgUrl(user._id)}}" alt="User image"></td>
+    </ng-container> -->
+    <ng-container matColumnDef="played">
+        <th mat-header-cell *matHeaderCellDef>Giocate</th>
+        <td mat-cell *matCellDef="let user">{{getPlayedNumber(user._id)}}</td>
+    </ng-container>
+    <ng-container matColumnDef="wins">
+        <th mat-header-cell *matHeaderCellDef>Vittorie</th>
+        <td mat-cell *matCellDef="let user">{{getWinsNumber(user._id)}}</td>
+    </ng-container>
+    <ng-container matColumnDef="goals">
+        <th mat-header-cell *matHeaderCellDef>Goal</th>
+        <td mat-cell *matCellDef="let user">{{getGoalsNumber(user._id)}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/users', row._id, 'stats']"></tr>
+</table>
+}

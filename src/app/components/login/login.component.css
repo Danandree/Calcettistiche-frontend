@@ -1,0 +1,25 @@
+.login-card {
+    background-color: rgb(114, 184, 255);
+    padding: 10px;
+    border-radius: 0 0 10px 10px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    cursor: pointer;
+}
+
+button {
+    margin: 10px auto;
+    width:75%;
+    max-width: 150px;
+}
+
+p,
+h3 {
+    text-align: center;
+}

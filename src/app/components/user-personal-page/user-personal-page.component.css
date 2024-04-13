@@ -1,0 +1,58 @@
+img{
+    width: 70px;
+    margin-bottom: 15px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap:5px;
+}
+.dataContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(114, 184, 255);
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 90%;
+    max-width: 350px;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap:5px;
+}
+button{
+    width: 90%;
+    max-width: 200px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    max-width: 340px;
+    margin: 0;
+    background-color: rgb(114, 184, 255);
+    padding: 15px;
+    border-radius: 5px;
+    gap:10px;
+}
+.formClass{
+    display: none;
+}
+.selectedButton{
+    background-color: rgb(114, 184, 255);
+}
+h2{
+    text-align: center;
+}
+.deleteButton{
+    margin-top: 15px;
+}

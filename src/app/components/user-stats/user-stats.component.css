@@ -1,0 +1,65 @@
+h2 {
+    text-align: center;
+    margin: auto;
+}
+
+.diagram {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: rgb(114, 184, 255);
+    border-radius: 5px;
+    padding: 10px;
+}
+.spacer {
+    width: 30%;
+    display: flex;
+    justify-content: end;
+}
+
+img {
+    width: 50px;
+}
+
+canvasjs-chart {
+    width: 100%;
+    /* border-radius: 5px;
+    background-color: rgb(114, 184, 255);
+    border-radius: 50px; */
+}
+
+.playerGoal{
+    display: flex;
+}
+
+@media screen and (max-width: 400px) {
+    .playerGoal {
+        flex-direction: column;
+    }
+    .title{
+        flex-direction: column;
+    }
+    .title h2{
+        margin-bottom: 5px;
+    }
+    .spacer{
+        width: 100%;
+        justify-content: center;
+    }
+    .title-compare {
+        flex-direction: column;
+    }
+
+    .title-compare h2 {
+        margin: auto;
+        margin-bottom: 5px;
+    }
+}

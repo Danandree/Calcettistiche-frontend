@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    gap: 5px;
+}
+.formContainer {
+    display: flex;
+    height: 100%;
+    gap: 5px;
+}
+mat-form-field {
+    width: 50%;
+}
+app-user-stats {
+    width: 49%;
+}

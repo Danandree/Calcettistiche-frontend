@@ -1,0 +1,9 @@
+<mat-drawer-container autosize>
+  <app-top-bar (menuButtonPressed)="changeSidenavState()"></app-top-bar>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  <mat-drawer position="end" mode="over" [opened]="sidenav" (closedStart)="sidenav = false" class="sidenav-container">
+    <app-sidenav (closeSidebar)="changeSidenavState()"></app-sidenav>
+  </mat-drawer>
+</mat-drawer-container>

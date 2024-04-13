@@ -1,0 +1,25 @@
+<div class="container" (click)="closeSidebar.emit()">
+    <div class="menuTitle">
+        <h2>Menù</h2>
+    </div>
+    <div class="button-container">
+        <h3>Liste</h3>
+        <button mat-raised-button (click)="goToUserList()">Giocatori</button>
+        <button mat-raised-button (click)="goToMatchList()">Partite</button>
+    </div>
+    @if(isLogged()){
+    <div class="button-container">
+        <h3>Partite</h3>
+        <button mat-raised-button (click)="goToMatchCreate()">Crea partita</button>
+        <button mat-raised-button (click)="goToRefereeList()">Modifica partita</button>
+    </div>
+    <div class="button-container">
+        <h3>Utente</h3>
+        <button mat-raised-button (click)="goToProfile()">Profilo</button>
+        <button mat-raised-button (click)="goToStats()">Statistiche</button>
+        <button class="log-button" color="warn" mat-raised-button (click)="logout()">Logout</button>
+    </div>
+    }@else {
+    <button class="log-button" mat-raised-button color="warn" (click)="goToLogin()">Login</button>
+    }
+</div>

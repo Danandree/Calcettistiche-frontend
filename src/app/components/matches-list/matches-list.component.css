@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+    background-color: rgb(114, 184, 255);
+
+}
+td,
+th {
+    text-align: center;
+}
+h2{
+    text-align: center;
+}

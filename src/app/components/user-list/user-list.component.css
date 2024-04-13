@@ -1,0 +1,57 @@
+h2 {
+    text-align: center;
+}
+
+img {
+    width: 35px;
+}
+table {
+    width: 100%;
+    background-color: rgb(114, 184, 255);
+    border-radius: 15px;
+}
+
+td,
+th {
+    text-align: center;
+}
+
+
+.mat-column-username {
+    min-width: 50%;
+    max-width: 50%;
+}
+
+.mat-column-played,
+.mat-column-wins,
+.mat-column-goals,
+.mat-column-img {
+    min-width: 10%;
+    max-width: 10%;
+}
+
+@media screen and (max-width: 420px) {
+
+    td,
+    th {
+        text-align: center;
+    }
+
+    img {
+        width: 25px;
+    }
+
+    .mat-column-username {
+        min-width: 30%;
+        max-width: 30%;
+    }
+
+    .mat-column-played,
+    .mat-column-wins,
+    .mat-column-goals,
+    .mat-column-img {
+        min-width: 10px;
+        max-width: 10px;
+    }
+
+}

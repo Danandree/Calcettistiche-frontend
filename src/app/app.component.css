@@ -1,0 +1,22 @@
+.container{
+    width: 95%;
+    max-width: 700px;
+    margin: 10px auto;
+}
+
+.sidenav-container{
+    height: 100%;
+    width: 300px;
+}
+
+mat-drawer-container{
+    background-color: rgb(178, 217, 255);
+    height: 100%;
+}
+
+@media screen and (max-width: 450px) {
+    .sidenav-container{
+        width: 200px;
+    }
+    
+}

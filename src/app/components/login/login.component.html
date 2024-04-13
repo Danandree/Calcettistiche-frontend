@@ -1,0 +1,27 @@
+<div class="login-card">
+    <div class="form-container" [formGroup]="form">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+            @if (form.hasError('email') && !form.hasError('required')) {
+            <mat-error>Inserire una email valida</mat-error>
+            }
+            @if (form.hasError('required')) {
+            <mat-error>Email is <strong>required</strong></mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+            @if (form.hasError('email') && !form.hasError('required')) {
+            <mat-error>Inserire una password valida</mat-error>
+            }
+            @if (form.hasError('required')) {
+            <mat-error>Una password é <strong>obbligatoria</strong></mat-error>
+            }
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="login()" [disabled]="!form.valid">Login</button>
+    </div>
+    <p>Non hai un account? <a class="link" (click)="goToSignup()">Registrati</a></p>
+</div>

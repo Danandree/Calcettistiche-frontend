@@ -1,0 +1,64 @@
+@if(userStats ){
+@if(compareButton){
+<h2>Statistiche</h2>
+}
+<div class="title" [ngClass]="{'title-compare': !compareButton}" [routerLink]="['/users', userStats._id, 'stats']">
+    @if(compareButton){
+    <div class="spacer"></div>
+    }
+    <h2>{{userStats.username}}</h2>
+    @if(compareButton){
+    <div class="spacer">
+        <button mat-raised-button color="primary" [routerLink]="['/users', userStats._id, 'compare']">Confronta</button>
+    </div>
+    }
+</div>
+@if(userStats.team1.length + userStats.team2.length > 0){
+<div class="diagram">
+    <canvasjs-chart [options]="chartMatches"></canvasjs-chart>
+    <canvasjs-chart [options]="chartTeams"></canvasjs-chart>
+    <canvasjs-chart [options]="chartTeamsWin"></canvasjs-chart>
+    <canvasjs-chart [options]="chartGoals"></canvasjs-chart>
+</div>
+<!-- <div class="text-container">
+    <h4>Partite giocate:</h4>
+    <p> {{userStats.team1.length + userStats.team2.length}} su {{userStats.totalMatch}}</p>
+    <h4>Partite vinte: </h4>
+    <p>{{userStats.wins.length}} su {{userStats.team1.length + userStats.team2.length}}</p>
+    <h4>Partite pareggiate:</h4>
+    <p> {{userStats.draws.length}}</p>
+    <h4>Partite perse:</h4>
+    <p> {{(userStats.team1.length + userStats.team2.length) - userStats.wins.length}} su
+        {{userStats.team1.length + userStats.team2.length}}</p>
+    <h4>Goal fatti:</h4>
+    <p> {{userStats.goals.length}} in {{userStats.team1.length + userStats.team2.length}} partite</p>
+    <h4>Gol col team 1:</h4>
+    <p> {{goalsTeam1}} in {{userStats.team1.length}} partite</p>
+    <h4>Gol col team 2:</h4>
+    <p> {{goalsTeam2}} in {{userStats.team2.length}} partite</p>
+    <h4>Partite col team 1:</h4>
+    <p> {{userStats.team1.length}}</p>
+    <h4>Partite col team 2:</h4>
+    <p> {{userStats.team2.length}}</p>
+    <h4>Vittorie col team 1:</h4>
+    <p> {{this.team1Wins}} su {{userStats.team1.length}}</p>
+    <h4>Vittorie col team 2:</h4>
+    <p> {{this.team2Wins}} su {{userStats.team2.length}}</p>
+    <h4>Pareggi col team 1:</h4>
+    <p> {{this.team1Draws}} su {{userStats.team1.length}}</p>
+    <h4>Pareggi col team 2:</h4>
+    <p> {{this.team2Draws}} su {{userStats.team2.length}}</p>
+    <h4>Sconfitte col team 1:</h4>
+    <p> {{this.team1Loses}} su {{userStats.team1.length}}</p>
+    <h4>Sconfitte col team 2:</h4>
+    <p> {{this.team2Loses}} su {{userStats.team2.length}}</p>
+    <h4>Pertite totali del gruppo:</h4>
+    <p> {{userStats.totalMatch}}</p>
+</div> -->
+}
+@else {
+<div class="title">
+    <h3>Ancora nessuna partita giocata</h3>
+</div>
+}
+}

@@ -1,0 +1,8 @@
+.container{
+    background-color: rgb(114, 184, 255);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+}

@@ -1,0 +1,49 @@
+@if(match){
+<h2>Statistiche partita</h2>
+<div class="title">
+    <h3>Data: {{match.date | date: 'd-M-yyyy'}}</h3>
+    <h3>Giocatori: {{match.team1.length}} vs {{match.team2.length}}</h3>
+    <h3>Risultato: {{team1Score}} - {{team2Score}}</h3>
+</div>
+<div class="teams">
+    <div class="team">
+        <h4>Team 1:</h4>
+        @for(user of playerTeam1; track $index){
+        <p [routerLink]="['/users',user._id,'stats']" routerLinkActive="router-link-active"> {{user.username}}</p>
+        }
+    </div>
+    <div class="team divider">
+        <h4>-</h4>
+        @for(user of teamMaxLength(); track $index){
+        <p> {{$index + 1}}</p>
+        }
+    </div>
+    <div class="team">
+        <h4>Team 2:</h4>
+        @for(user of playerTeam2; track $index){
+        <p [routerLink]="['/users',user._id,'stats']" routerLinkActive="router-link-active">{{user.username}}</p>
+        }
+    </div>
+</div>
+<div class="goalContainer">
+    <h3>Goal: {{playerGoals.length}}</h3>
+    @for(user of playerGoals; track $index){
+    <div class="goalRow">
+        <div class="space" [ngClass]="{'hide':match.team1.includes(user._id)}"></div>
+        <p [ngClass]="{'hide':match.team1.includes(user._id)}">{{$index + 1}}</p>
+        <p class="space" [routerLink]="['/users',user._id,'stats']">{{user.username}}</p>
+        <p [ngClass]="{'hide':match.team2.includes(user._id)}">{{$index + 1}}</p>
+        <div class="space" [ngClass]="{'hide':match.team2.includes(user._id)}"></div>
+    </div>
+    }
+</div>
+<div class="title">
+    <h3>Amministratori:</h3>
+    @for(user of admins; track $index){
+    <p [routerLink]="['/users',user._id,'stats']" routerLinkActive="router-link-active"> {{user.username}}</p>
+    }
+    @if(checkUser()) {
+    <button mat-raised-button color="primary" [routerLink]="['/matches',match._id,'edit']">Modifica</button>
+    }
+</div>
+}
