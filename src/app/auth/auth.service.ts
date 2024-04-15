@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
 import { ErrorDialogComponent } from '../components/error-dialog/error-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
