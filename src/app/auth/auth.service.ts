@@ -4,6 +4,7 @@ import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
 import { ErrorDialogComponent } from '../components/error-dialog/error-dialog.component';
+import { ConfirmationDialogComponent } from '../components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../environments/environment';
 
@@ -40,8 +41,11 @@ export class AuthService {
 
   logout(): void {
     this.http.post(`${this.serverUrl}/logout`, {}).subscribe({
-      next: (data: any) => { console.log(data); },
-      error: (error: any) => { console.log(error); },
+      next: (data: any) => { this.dialog.open(ConfirmationDialogComponent, { data: { message: "Logout avvenuto con successo" } }); },
+      error: (error: any) => {
+        console.log(error);
+        this.dialog.open(ErrorDialogComponent, { data: error });
+      },
       complete: () => {
         localStorage.removeItem('USER_ID');
         this.router.navigate(['/home']);
@@ -57,7 +61,10 @@ export class AuthService {
           localStorage.setItem('USER_ID', userCreated._id);
           this.router.navigate(['/users', userCreated._id, "stats"]);
         },
-        error: (error: any) => { console.log(error); this.dialog.open(ErrorDialogComponent, { data: error }); },
+        error: (error: any) => {
+          console.log(error);
+          this.dialog.open(ErrorDialogComponent, { data: error });
+        },
       });
   }
 }

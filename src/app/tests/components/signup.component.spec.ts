@@ -31,7 +31,6 @@ describe('SignupComponent', () => {
     component.signup();
     component.form.get('password')!.setValue("test123456789012345678901234567890");
     component.signup();
-    console.log(component.form.get('password')!.value)
     expect(component.form.valid).toBeFalse();
   });
 

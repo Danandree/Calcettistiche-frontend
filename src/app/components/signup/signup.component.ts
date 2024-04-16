@@ -34,7 +34,6 @@ export class SignupComponent {
 
   constructor(private auth: AuthService, private router: Router) { }
   signup() {
-    console.log("SINGUP");
     if (this.form.valid) {
       this.user.username = this.form.value.username!;
       this.user.email = this.form.value.email!;

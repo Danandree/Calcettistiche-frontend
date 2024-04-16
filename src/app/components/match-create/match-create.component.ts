@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../../interfaces/user';
 import { MatIconModule } from '@angular/material/icon';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-match-create',
@@ -52,7 +54,10 @@ export class MatchCreateComponent {
 
   matchSubmitListener = {
     next: (data: Match) => { this.router.navigate(['/matches', data._id]); },
-    error: (err: any) => { console.log(err); }
+    error: (err: any) => {
+      console.log(err);
+      this.dialog.open(ErrorDialogComponent, { data: err });
+    }
   }
 
   constructor(private userService: UserService,
@@ -60,7 +65,8 @@ export class MatchCreateComponent {
     private matchService: MatchService,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private dialog: MatDialog) { }
 
   ngOnInit() {
     let team1: UserStats[] = [];

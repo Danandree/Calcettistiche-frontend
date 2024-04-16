@@ -38,7 +38,6 @@ button {
     margin: 5px auto;
     gap:5px;
     padding-bottom: 10px;
-    border-bottom: 5px rgb(114, 184, 255) solid;
 }
 .log-button{
     margin: 10px auto;
@@ -62,7 +61,6 @@ button {
 }
 @media screen and (min-width: 900px) {
     .container{
-        /* border: 2px solid rgb(114, 184, 255); */
         height: fit-content;
         border-bottom: none;
     }

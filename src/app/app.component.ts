@@ -21,6 +21,5 @@ export class AppComponent {
   sidenav = false;
   changeSidenavState(state?: boolean): void {
     state ? this.sidenav = state : this.sidenav = !this.sidenav;
-    console.log(state,"STATE");
   }
 }

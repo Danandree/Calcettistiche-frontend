@@ -30,6 +30,8 @@ mat-drawer-container {
 }
 
 @media screen and (min-width: 900px) {
+}
+@media screen and (min-width: 1100px) {
     mat-drawer{
         display: none;
     }
@@ -39,8 +41,6 @@ mat-drawer-container {
         width: 25%;
         height: 100%;
     }
-}
-@media screen and (min-width: 1100px) {
     
     .spacer{
         display: inline-block;

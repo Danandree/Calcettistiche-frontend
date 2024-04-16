@@ -9,8 +9,8 @@
         <p>Username: <strong>{{user.username}}</strong></p>
     </div>
     @if(formOpened){
-        <form>
-            <mat-form-field class="example-full-width">
+        <form class="formContainer">
+            <mat-form-field class="formClass">
                 <mat-label>{{inputLabel}}</mat-label>
                 <input matInput [(ngModel)]="inputPlaceholder" [ngModelOptions]="{standalone: true}" />
             </mat-form-field>

@@ -42,7 +42,6 @@ describe('MatchCreateComponent', () => {
   });
 
   it('should retrieve all the data', () => {
-    console.log(component.matchId, "MATCH ID");
     const userService = TestBed.inject(UserService);
     const matchService = TestBed.inject(MatchService);
     spyOn(userService, 'getUserList').and.returnValue(of(UserStatsMock));
@@ -73,21 +72,17 @@ describe('MatchCreateComponent', () => {
     component.matchId = null;
     component.userList = UserStatsMock;
     component.goalPerUser = { "1": 0 };
-    console.log(component.goalPerUser["1"], "GOAL PER USER");
     component.form.get('team1')!.setValue([UserStatsMock[0]]);
     component.form.get('team2')!.setValue([UserStatsMock[1]]);
     component.form.get('goalTeam1')!.setValue([UserStatsMock[0]]);
     component.form.get('goalTeam2')!.setValue([UserStatsMock[1]]);
     component.form.get('admins')!.setValue([UserStatsMock[1]]);
     component.form.get('date')!.setValue(new Date());
-    console.log(component.form.get('team1')!.value, "TEAM 1");
-    console.log(component.userList, "USER LIST");
     // spyOn(matchService, 'createMatch').and.returnValue(of({} as any));
     component.submit();
     component.matchId = "123456789012";
     // spyOn(matchService, 'updateMatch').and.returnValue(of({} as any));
     component.submit();
-    console.log(component.form.valid)
     expect(component).toBeTruthy();
   });
 

@@ -36,7 +36,6 @@ export class LoginComponent {
   constructor(private auth: AuthService, private router: Router, public dialog: MatDialog) { }
 
   login() {
-    console.log(this.form.value, "LOGIN PAGE");
     if (this.form.valid) {
       this.user.email = this.form.value.email!
       this.user.password = this.form.value.password!
