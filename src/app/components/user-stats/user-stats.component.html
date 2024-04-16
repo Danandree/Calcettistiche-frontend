@@ -9,7 +9,7 @@
     <h2>{{userStats.username}}</h2>
     @if(compareButton){
     <div class="spacer">
-        <button mat-raised-button color="primary" [routerLink]="['/users', userStats._id, 'compare']">Confronta</button>
+        <button mat-raised-button color="primary" [routerLink]="['/users', userStats._id, 'compare', userStats._id]">Confronta</button>
     </div>
     }
 </div>

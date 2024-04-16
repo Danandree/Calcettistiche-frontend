@@ -3,16 +3,7 @@ h1 {
     background-color: aquamarine;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.example-spacer {
-    flex: 1 1 auto;
-}
-.title-container{
+.title-container {
     display: flex;
     width: 100%;
     max-width: 710px;
@@ -20,8 +11,25 @@ h1 {
     align-items: center;
     margin: auto;
 }
-.top-bar{
+
+.top-bar {
     /* display: flex;
     justify-content: space-between; */
     background-color: rgb(114, 184, 255);
+}
+
+.spacer {
+    display: none;
+}
+
+@media screen and (min-width: 900px) {
+    .menuButton {
+        display: none;
+    }
+
+    .spacer {
+        display: block;
+        margin: auto;
+    }
+
 }

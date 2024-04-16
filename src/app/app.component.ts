@@ -19,7 +19,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 export class AppComponent {
   title = 'frontend';
   sidenav = false;
-  changeSidenavState(): void {
-    this.sidenav = !this.sidenav;
+  changeSidenavState(state?: boolean): void {
+    state ? this.sidenav = state : this.sidenav = !this.sidenav;
+    console.log(state,"STATE");
   }
 }
