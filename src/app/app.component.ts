@@ -4,6 +4,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,

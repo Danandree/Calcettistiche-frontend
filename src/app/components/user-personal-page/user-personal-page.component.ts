@@ -35,7 +35,7 @@ export class UserPersonalPageComponent {
   inputPlaceholder: string = "";
   inputLabel: string = "";
 
-  constructor(private auth: AuthService, private userService: UserService, private route: ActivatedRoute, private router: Router, private dialog: MatDialog) { }
+  constructor(private auth: AuthService, private userService: UserService, private route: ActivatedRoute, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.userService.getUserPrivate(this.userId).subscribe({

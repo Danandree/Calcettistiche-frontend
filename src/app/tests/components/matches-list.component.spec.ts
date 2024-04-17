@@ -26,7 +26,7 @@ describe('MatchesListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should retrieve machines list', () => {
+  it('should retrieve matches list', () => {
     const route = TestBed.inject(ActivatedRoute);
     const matchService = TestBed.inject(MatchService);
     route.snapshot.url[0].path = "matches";
@@ -49,5 +49,25 @@ describe('MatchesListComponent', () => {
     route.snapshot.url[0].path = "";
     component.ngOnInit();
     expect(component.title).toBe("Lista partite modificabili");
+  });
+
+  it('should load more matches', () => {
+    component.page = 1;
+    component.loadMore();
+    expect(component.page).toBe(2);
+  });
+
+  it('should search for date', () => {
+    component.searchDate({value: "2024-01-01"});
+    expect(component.matchDate).toBe("2024-01-01");
+    const route = TestBed.inject(ActivatedRoute);
+    route.snapshot.url[0].path = ""; 
+    component.searchDate({value: "2024-01-01"});
+    expect(component.matchDate).toBe("2024-01-01"); 
+  });
+
+  it('should reset date', () => {
+    component.resetDate();
+    expect(component.matchDate).toBe(undefined);
   });
 });

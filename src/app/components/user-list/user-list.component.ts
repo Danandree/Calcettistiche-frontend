@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../interfaces/user';
 import { RouterLink } from '@angular/router';
 import { UserStats } from '../../interfaces/user-stats';
 import { MatTableModule } from '@angular/material/table';
@@ -18,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'

@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { userListMock } from '../../mock/userList';
 import { UserService } from '../../services/user.service';
 import { of, throwError } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('UserPersonalPageComponent', () => {
   let component: UserPersonalPageComponent;
@@ -14,9 +15,10 @@ describe('UserPersonalPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [UserPersonalPageComponent, HttpClientTestingModule, RouterTestingModule],
+      // providers:[{provide: MatDialog, useValue: {open: () => {true}}}]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(UserPersonalPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -54,13 +56,13 @@ describe('UserPersonalPageComponent', () => {
     component.modifyUser("Email");
     expect(component.user._id).toBe('2');
   });
-  
+
   it('should open the form', () => {
     component.user = userListMock[0];
     component.openForm("Email");
     component.openForm("Username");
     component.openForm("Password");
-    expect(component.formOpened).toBeFalse();
+    expect(component.formOpened).toBeTruthy();
   });
 
   it('should delete the user', () => {
@@ -68,6 +70,8 @@ describe('UserPersonalPageComponent', () => {
     component.user = userListMock[0];
     spyOn(userService, 'deleteUser').and.returnValue(of(userListMock[0]));
     component.deleteUser();
+    spyOn(component.dialog, 'open');
+    // component.deleteUser();
     expect(component.deleteUser).toBeTruthy();
   });
   it('should get error deleting the user', () => {

@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { UserStatsMock } from '../../mock/userStatsMock';
 import { UserService } from '../../services/user.service';
 import { of, throwError } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -12,7 +13,7 @@ describe('UserListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserListComponent, HttpClientTestingModule],
+      imports: [UserListComponent, HttpClientTestingModule, BrowserAnimationsModule],
     })
     .compileComponents();
     
@@ -68,5 +69,20 @@ describe('UserListComponent', () => {
     component.userStats = UserStatsMock
     component.getImgUrl("1");
     expect(component.getImgUrl("1")).toBe("");
+  });
+  it('should load more users', () => {
+    component.page = 1;
+    component.loadMore();
+    expect(component.page).toBe(2);
+  });
+
+  it('should search for username', () => {
+    component.search("test");
+    expect(component.searchQuery).toBe("test");
+  });
+
+  it('should delete the querySearch', () => {
+    component.deleteSearch();
+    expect(component.searchQuery).toBe("");
   });
 });
