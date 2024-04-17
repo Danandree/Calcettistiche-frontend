@@ -13,11 +13,15 @@ export class MatchService {
 
   constructor(private http: HttpClient, private auth: AuthService) { }
 
-  getMatchesList(): Observable<Match[]> {
-    return this.http.get<Match[]>(this.serverUrl);
+  getMatchesList(page = 1, per_page = 100, date?: string): Observable<Match[]> {
+    let url = `${this.serverUrl}?page=${page}&per_page=${per_page}`
+    if(date){url += `&date=${date}`}
+    return this.http.get<Match[]>(url);
   }
-  getMatchesRefereeList(): Observable<Match[]> {
-    return this.http.get<Match[]>(`${this.auth.serverUrl}/users/${this.auth.USER_ID}/referee`);
+  getMatchesRefereeList(page = 1, per_page = 100, date?: string): Observable<Match[]> {
+    let url = `${this.auth.serverUrl}/users/${this.auth.USER_ID}/referee?page=${page}&per_page=${per_page}`
+    if(date){url += `&date=${date}`}
+    return this.http.get<Match[]>(url);
   }
 
   getMatchById(id: string): Observable<Match> {

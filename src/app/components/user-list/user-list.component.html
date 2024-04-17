@@ -1,5 +1,16 @@
 @if(userStats){
 <h2>Lista giocatori: {{userList.length}}</h2>
+<div class="searchBar">
+    <mat-form-field>
+        <mat-label>Cerca</mat-label>
+        <input matInput placeholder="Username" #input [value]="searchQuery">
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="search(input.value)"><mat-icon>search</mat-icon></button>
+    <button mat-icon-button color="primary" (click)="deleteSearch()"><mat-icon>delete</mat-icon></button>
+</div>
+@if(userList.length == 0 && searchQuery != ''){
+    <h2>Non ci sono giocatori con il nome <span style="color: red;">{{searchQuery}}</span></h2>
+}
 <table mat-table [dataSource]="userList" class="table-test">
     <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef>Username</th>
@@ -24,4 +35,12 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/users', row._id, 'stats']"></tr>
 </table>
+@if(searchQuery == '' && !finishList){
+    <div class="loadMoreButton">
+        <button mat-raised-button color="primary" (click)="loadMore()">Carica altri utenti</button>
+    </div>
+}
+@if(finishList){
+    <h2>Non ci sono altri utenti</h2>
+}
 }

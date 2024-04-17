@@ -1,7 +1,6 @@
 table {
     width: 100%;
     background-color: rgb(114, 184, 255);
-
 }
 td,
 th {
@@ -9,4 +8,23 @@ th {
 }
 h2{
     text-align: center;
+}
+
+.searchBar{
+    width: 60%;
+    display: flex;
+    /* border: solid 2px red; */
+    /* align-items: center; */
+    margin: 0 auto;
+}
+.searchField{
+    /* border: solid 2px red; */
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.buttonContainer{
+display: flex;
+justify-content: center;
+margin: 15px auto;
 }

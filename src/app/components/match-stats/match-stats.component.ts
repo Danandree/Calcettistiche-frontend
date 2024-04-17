@@ -31,6 +31,10 @@ export class MatchStatsComponent {
   playerGoals: User[] = [];
   admins: User[] = [];
   matchId = this.route.snapshot.paramMap.get('id');
+  getOwnerListener = {
+    next: (data: User) => { this.admins.push(data); },
+    error: (err: any) => { console.log(err); }
+  }
   listenerForUserList = {
     next: (data: User[]) => {
       this.userList = data;
@@ -54,6 +58,11 @@ export class MatchStatsComponent {
           }
         });
       });
+      let userFlag = true;
+      this.admins.forEach(user => {
+        if(this.match!.createdBy == user._id) { userFlag = false; }
+      });
+      if(userFlag) { this.userService.getUserById(this.match!.createdBy).subscribe(this.getOwnerListener); }
     },
     error: (err: any) => { console.log(err); }
   }
