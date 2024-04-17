@@ -33,7 +33,6 @@ export class AuthService {
           this.router.navigate(['/users', user._id, "stats"]);
         },
         error: (error: any) => {
-          console.log(error.error);
           this.dialog.open(ErrorDialogComponent, { data: error });
         }
       });

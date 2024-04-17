@@ -86,7 +86,6 @@ export class UserListComponent {
     this.userService.getUserList(this.page, this.per_page).subscribe(this.listener);
   }
   search(query: string) {
-    console.log(query);
     this.userList = [];
     this.searchQuery = query;
     this.userService.getUserList(1, 100, this.searchQuery).subscribe(this.listener);
