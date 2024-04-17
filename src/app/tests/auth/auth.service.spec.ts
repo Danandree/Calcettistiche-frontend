@@ -19,7 +19,7 @@ describe('AuthService', () => {
   });
 
   it('should logout the user', () => {
-    spyOn(service, 'logout').and.returnValue(void 0);
+    spyOn(service, 'logout').and.resolveTo(void 0);
     service.logout();
     expect(service.USER_ID).toBe(null);
   });

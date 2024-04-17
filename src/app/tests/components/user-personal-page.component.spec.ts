@@ -6,7 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { userListMock } from '../../mock/userList';
 import { UserService } from '../../services/user.service';
 import { of, throwError } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 describe('UserPersonalPageComponent', () => {
   let component: UserPersonalPageComponent;
@@ -70,8 +70,8 @@ describe('UserPersonalPageComponent', () => {
     component.user = userListMock[0];
     spyOn(userService, 'deleteUser').and.returnValue(of(userListMock[0]));
     component.deleteUser();
-    spyOn(component.dialog, 'open');
-    // component.deleteUser();
+    spyOn(component.dialog, 'open').and.returnValue({ afterClosed: () => of(true) } as MatDialogRef<any>);
+    component.deleteUser();
     expect(component.deleteUser).toBeTruthy();
   });
   it('should get error deleting the user', () => {
