@@ -61,7 +61,6 @@ button {
 }
 @media screen and (min-width: 900px) {
     .container{
-        height: fit-content;
         border-bottom: none;
     }
     .menuTitle{
