@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { UserService } from '../../services/user.service';
-import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { UserStats } from '../../interfaces/user-stats';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -47,7 +47,7 @@ export class MatchCreateComponent {
     team2: new FormControl([]),
     goalTeam1: new FormControl([]),
     goalTeam2: new FormControl([]),
-    date: new FormControl,
+    date: new FormControl(Validators.required),
     admins: new FormControl([]),
   }, { validator: teamsValidator });
 
