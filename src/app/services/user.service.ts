@@ -25,7 +25,7 @@ export class UserService {
     return this.http.get<UserStats>(`${this.serverUrl}${id}/stats`);
   }
 
-  getUserList(page = 1, per_page = 10, username?: string): Observable<UserStats[]> {
+  getUserList(page = 1, per_page = 1000, username?: string): Observable<UserStats[]> {
     let url = `${this.serverUrl}?page=${page}&per_page=${per_page}`;
     if (username) { url += `&username=${username}` }
     return this.http.get<UserStats[]>(url);

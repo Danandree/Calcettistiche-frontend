@@ -4,7 +4,7 @@ import { HomePageComponent } from '../../components/home-page/home-page.componen
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AuthService } from '../../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, provideRouter } from '@angular/router';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -13,7 +13,9 @@ describe('HomePageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HomePageComponent, HttpClientTestingModule],
-      providers: [provideAnimationsAsync()],
+      providers: [provideAnimationsAsync(), provideRouter([
+        { path: 'users/test/stats', component: HomePageComponent },
+      ])],
     })
     .compileComponents();
     

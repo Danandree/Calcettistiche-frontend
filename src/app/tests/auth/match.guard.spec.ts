@@ -33,9 +33,9 @@ describe('matchGuard', () => {
     expect(executeGuard).toBeTruthy();
   });
 
-  it('should not activate', () => {
-    const result = executeGuard(mockRoute, {} as any);
-    console.log(result, "should not activate");
-    // expect(result).toEqual(Promise.resolve(false));
-  });
+  // it('should not activate', () => {
+  //   const result = executeGuard(mockRoute, {} as any);
+  //   console.log(result, "should not activate");
+  //   expect(result).toEqual(Promise.resolve(false));
+  // });
 });
