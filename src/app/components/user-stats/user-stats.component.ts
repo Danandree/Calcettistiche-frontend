@@ -74,7 +74,8 @@ export class UserStatsComponent {
       backgroundColor: "#72b8ff",
       animationEnabled: true,
       title: {
-        text: "Partite totali"
+        text: "Partite totali",
+        fontSize: 28
       },
       data: [{
         type: "pie",
@@ -98,7 +99,8 @@ export class UserStatsComponent {
       animationEnabled: true,
       backgroundColor: "#72b8ff",
       title: {
-        text: "Goal"
+        text: "Goal",
+        fontSize: 28
       },
       data: [{
         type: "pie",
@@ -120,7 +122,8 @@ export class UserStatsComponent {
       animationEnabled: true,
       backgroundColor: "#72b8ff",
       title: {
-        text: "Risultati per team"
+        text: "Risultati per team",
+        fontSize: 28
       },
       data: [{
         type: "pie",
@@ -146,7 +149,8 @@ export class UserStatsComponent {
       animationEnabled: true,
       backgroundColor: "#72b8ff",
       title: {
-        text: "Partite per team"
+        text: "Partite per team",
+        fontSize: 28
       },
       data: [{
         type: "pie",

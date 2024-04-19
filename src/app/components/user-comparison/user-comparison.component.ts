@@ -28,7 +28,7 @@ export class UserComparisonComponent {
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
   ngOnInit(): void {
     this.userService.getUserList().subscribe({
-      next: (data: UserStats[]) => { this.userList = data },
+      next: (data: UserStats[]) => { this.userList = data.sort((a, b) => a.username.localeCompare(b.username)) },
       error: (err: any) => { console.log(err); }
     });
   }

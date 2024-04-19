@@ -15,7 +15,7 @@
 </div>
 @if(userStats.team1.length + userStats.team2.length > 0){
 <div class="diagram">
-    <canvasjs-chart [options]="chartMatches"></canvasjs-chart>
+    <canvasjs-chart class="chart" [options]="chartMatches"></canvasjs-chart>
     <canvasjs-chart [options]="chartTeams"></canvasjs-chart>
     <canvasjs-chart [options]="chartTeamsWin"></canvasjs-chart>
     <canvasjs-chart [options]="chartGoals"></canvasjs-chart>
