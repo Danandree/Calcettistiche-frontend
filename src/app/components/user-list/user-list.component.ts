@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import {Sort, MatSortModule} from '@angular/material/sort';
+
 
 @Component({
   selector: 'app-user-list',
@@ -18,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatIconModule,
     MatButtonModule,
+    MatSortModule,
   ],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
@@ -90,10 +93,37 @@ export class UserListComponent {
     this.userService.getUserList(1, 100, this.searchQuery).subscribe(this.listener);
   }
   deleteSearch() {
-    this.userList = [];
-    this.finishList = false;
-    this.searchQuery = '';
-    this.page = 0;
-    this.loadMore();
+    if(this.searchQuery != '') {
+      this.userList = [];
+      this.finishList = false;
+      this.searchQuery = '';
+      this.page = 0;
+      this.loadMore();
+    }
+  }
+
+  sortData(sort: Sort) {
+    console.log(sort);
+    const data = this.userList.slice();
+    if (!sort.active || sort.direction === '') {
+      this.userList = data;
+      return;
+    }
+
+    console.log(this.userList)
+    this.userList = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'username': return this.sortingCompare(a.username, b.username, isAsc);
+        case 'played': return this.sortingCompare(this.getPlayedNumber(a._id), this.getPlayedNumber(b._id), isAsc);
+        case 'wins': return this.sortingCompare(this.getWinsNumber(a._id), this.getWinsNumber(b._id), isAsc);
+        case 'goals': return this.sortingCompare(this.getGoalsNumber(a._id), this.getGoalsNumber(b._id), isAsc);
+        default: return 0;
+      }
+    });
+  }
+
+  sortingCompare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }
