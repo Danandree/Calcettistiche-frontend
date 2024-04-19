@@ -9,9 +9,9 @@
     </mat-form-field>
     <button mat-icon-button color="primary" (click)="resetDate()"><mat-icon>highlight_off</mat-icon></button>
 </div>
-@if(matchesList.length == 0 && matchDate){
+<!-- @if(matchesList.length == 0 && matchDate){
     <h2>Non ci sono partite il giorno <span style="color: red;">{{matchDate | date: 'd-M-yyyy'}}</span></h2>
-}
+} -->
 <table mat-table [dataSource]="matchesList" class="table-test">
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>Data</th>
@@ -35,5 +35,8 @@
 }
 @if(finishList && !matchDate){
 <h2>Non ci sono altre partite</h2>
+}
+@if(matchDate && finishList){
+<h2>Non ci sono partite il giorno <span style="color: red;">{{matchDate | date: 'd-M-yyyy'}}</span></h2>
 }
 }

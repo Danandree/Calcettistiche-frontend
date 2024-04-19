@@ -37,11 +37,12 @@ export class MatchesListComponent {
   finishList = false;
   page = 1;
   per_page = 20;
-  matchDate: string | undefined;
+  matchDate: string | undefined = undefined;
   displayedColumns: string[] = ['date', 'result', 'player'];
   matchesList?: Match[];
   matchesListener = {
     next: (data: Match[]) => {
+      console.log(data);
       this.matchesList = this.matchesList?.concat(data) || data;
       if (data.length == 0) {
         this.finishList = true;
@@ -54,35 +55,39 @@ export class MatchesListComponent {
   constructor(private matchService: MatchService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    if (this.route.snapshot.url[0].path == 'matches') {
-      this.matchService.getMatchesList(this.page, this.per_page).subscribe(this.matchesListener);
-    }
-    else {
-      this.title += ' modificabili';
-      this.matchService.getMatchesRefereeList(this.page, this.per_page).subscribe(this.matchesListener);
-    }
+    this.getLists(this.page, this.per_page, this.matchDate);
   }
 
+  getLists(page = 1, per_page = 100, date?: string) {
+    if (this.route.snapshot.url[0].path == 'matches') {
+      this.title = 'Lista partite';
+      this.matchService.getMatchesList(page, per_page, date).subscribe(this.matchesListener);
+    }
+    else {
+      this.title = 'Lista partite modificabili';
+      this.matchService.getMatchesRefereeList(page, per_page, date).subscribe(this.matchesListener);
+    }
+  }
+  
   loadMore() {
     this.page += 1;
-    this.matchService.getMatchesList(this.page, this.per_page, this.matchDate).subscribe(this.matchesListener);
+    this.getLists(this.page, this.per_page, this.matchDate);
   }
+
   searchDate(event: any) {
     this.matchesList = undefined;
     this.page = 1;
     this.matchDate = event.value;
-    if (this.route.snapshot.url[0].path == 'matches') {
-      this.matchService.getMatchesList(this.page, 100, this.matchDate).subscribe(this.matchesListener);
-    }else{
-      this.matchService.getMatchesRefereeList(this.page, 100, this.matchDate).subscribe(this.matchesListener);
-    }
+    this.getLists(this.page, 100, this.matchDate);
   }
 
   resetDate() {
-    this.matchDate = undefined;
-    this.finishList = false;
-    this.matchesList = [];
-    this.page = 0;
-    this.loadMore();
+    if (this.matchDate) {
+      this.matchDate = undefined;
+      this.finishList = false;
+      this.matchesList = [];
+      this.page = 1;
+      this.getLists(this.page, this.per_page, this.matchDate);
+    }
   }
 }
