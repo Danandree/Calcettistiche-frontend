@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import {Sort, MatSortModule} from '@angular/material/sort';
+import { Sort, MatSortModule } from '@angular/material/sort';
 
 
 @Component({
@@ -93,7 +93,7 @@ export class UserListComponent {
     this.userService.getUserList(1, 100, this.searchQuery).subscribe(this.listener);
   }
   deleteSearch() {
-    if(this.searchQuery != '') {
+    if (this.searchQuery != '') {
       this.userList = [];
       this.finishList = false;
       this.searchQuery = '';

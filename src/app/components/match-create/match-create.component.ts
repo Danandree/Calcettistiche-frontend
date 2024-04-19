@@ -77,6 +77,7 @@ export class MatchCreateComponent {
     this.userService.getUserList().subscribe({
       next: (data: UserStats[]) => {
         this.userList = data;
+        this.userList.sort((a, b) => a.username.localeCompare(b.username));
         if (this.matchId) {
           this.matchService.getMatchById(this.matchId).subscribe({
             next: (data: Match) => {

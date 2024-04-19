@@ -5,6 +5,7 @@ h2 {
 img {
     width: 35px;
 }
+
 table {
     width: 100%;
     background-color: rgb(114, 184, 255);
@@ -29,20 +30,34 @@ th {
     min-width: 10%;
     max-width: 10%;
 }
-.searchBar{
+
+.searchBar {
     display: flex;
     width: 100%;
     justify-content: center;
 }
-mat-form-field{
+
+mat-form-field {
     width: 70%;
 }
-.loadMoreButton{
-    width:100;
+
+.loadMoreButton {
+    width: 100;
     margin: 10px auto;
     display: flex;
     justify-content: center;
 }
+
+mat-header-cell {
+    display: flex;
+    justify-content: flex-end;
+}
+
+::ng-deep .mat-sort-header-container {
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (max-width: 420px) {
 
     td,

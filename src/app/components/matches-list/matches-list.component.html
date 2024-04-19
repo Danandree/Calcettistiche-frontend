@@ -28,7 +28,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/matches', row._id]"></tr>
 </table>
-@if(!matchDate && !finishList){
+@if(!matchDate && !finishList && matchesList.length != 0){
 <div class="buttonContainer">
     <button mat-raised-button color="primary" (click)="loadMore()">Carica altre partite</button>
 </div>

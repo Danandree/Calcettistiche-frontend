@@ -8,9 +8,9 @@
     <button mat-icon-button color="primary" (click)="search(input.value)"><mat-icon>search</mat-icon></button>
     <button mat-icon-button color="primary" (click)="deleteSearch()"><mat-icon>delete</mat-icon></button>
 </div>
-<table mat-table [dataSource]="userList" class="table-test">
+<table mat-table [dataSource]="userList" class="table-test" matSort (matSortChange)="sortData($event)">
     <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef>Username</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
         <td mat-cell *matCellDef="let user">{{user.username}}</td>
     </ng-container>
     <!-- <ng-container matColumnDef="img">
@@ -18,15 +18,15 @@
         <td mat-cell *matCellDef="let user"><img src="{{getImgUrl(user._id)}}" alt="User image"></td>
     </ng-container> -->
     <ng-container matColumnDef="played">
-        <th mat-header-cell *matHeaderCellDef>Giocate</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Giocate</th>
         <td mat-cell *matCellDef="let user">{{getPlayedNumber(user._id)}}</td>
     </ng-container>
     <ng-container matColumnDef="wins">
-        <th mat-header-cell *matHeaderCellDef>Vittorie</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vittorie</th>
         <td mat-cell *matCellDef="let user">{{getWinsNumber(user._id)}}</td>
     </ng-container>
     <ng-container matColumnDef="goals">
-        <th mat-header-cell *matHeaderCellDef>Goal</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Goal</th>
         <td mat-cell *matCellDef="let user">{{getGoalsNumber(user._id)}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -35,7 +35,7 @@
 @if(userList.length == 0 && searchQuery != ''){
     <h2>Non ci sono giocatori con username <span style="color: red;">{{searchQuery}}</span></h2>
 }
-@if(searchQuery == '' && !finishList){
+@if(searchQuery == '' && !finishList && userList.length != 0){
     <div class="loadMoreButton">
         <button mat-raised-button color="primary" (click)="loadMore()">Carica altri utenti</button>
     </div>
