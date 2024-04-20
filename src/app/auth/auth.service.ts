@@ -26,6 +26,7 @@ export class AuthService {
 
   login(user: User): void {
     user.password = this.encryptPassword(user.password);
+    console.log(user);
     this.http.post<User>(`${this.serverUrl}/login`, user).subscribe(
       {
         next: (user: User) => {

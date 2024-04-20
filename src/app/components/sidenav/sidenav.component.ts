@@ -31,4 +31,5 @@ export class SidenavComponent {
   goToLogin(): void { this.router.navigate(['home']); }
   goToMatchCreate(): void { this.router.navigate(['matches/create']); }
   goToRefereeList(): void { this.router.navigate(['users', this.auth.USER_ID, 'referee']); }
+  goToGroupList(): void { this.router.navigate(['groups']); }
 }
